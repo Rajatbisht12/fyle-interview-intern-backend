@@ -1,15 +1,18 @@
-from flask import jsonify
+from flask import Blueprint, jsonify, request
+from core.models import assignments, users
 from marshmallow.exceptions import ValidationError
 from core import app
 from core.apis.assignments import student_assignments_resources, teacher_assignments_resources
 from core.libs import helpers
 from core.libs.exceptions import FyleError
 from werkzeug.exceptions import HTTPException
+from core.apis.assignments.principal import principal_blueprint
 
 from sqlalchemy.exc import IntegrityError
 
 app.register_blueprint(student_assignments_resources, url_prefix='/student')
 app.register_blueprint(teacher_assignments_resources, url_prefix='/teacher')
+app.register_blueprint(principal_blueprint)
 
 
 @app.route('/')
@@ -41,4 +44,8 @@ def handle_error(err):
             error=err.__class__.__name__, message=str(err)
         ), err.code
 
-    raise err
+    # raise err
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=7755)

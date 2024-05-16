@@ -1,0 +1,3 @@
+# exclude.txt
+core/libs/assertions.py
+core/libs/exceptions.py

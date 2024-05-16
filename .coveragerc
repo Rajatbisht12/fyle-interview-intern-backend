@@ -1,6 +1,12 @@
 [run]
+source =
+    core
+    tests
+    run_tests.py
+
 omit =
     *env/*
     *__pycache__/*
     *.pytest_cache/*
-    *tests/*
+    core/libs/assertions.py
+    core/libs/exceptions.py
