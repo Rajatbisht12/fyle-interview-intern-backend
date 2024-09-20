@@ -54,6 +54,7 @@ pytest -vvv -s tests/
 
 # for test coverage report
 # pytest --cov
+# pytest --cov-report=html for html report
 # open htmlcov/index.html
 ```
 
